@@ -43,7 +43,7 @@ function playRound(playerSelection,computerSelection){
         
         let result = "You won! Rock beats Scissors!";
         playerScore++;
-        console.log("player scored: " + playerScore);
+        console.log("You scored: " + playerScore);
         return result;
 
     }else if (playerSelection === 'PAPER' && computerSelection === 'PAPER'){
@@ -55,7 +55,7 @@ function playRound(playerSelection,computerSelection){
 
         let result = "You won! Paper beats Rock!";
         playerScore++;
-        console.log("player scored: " + playerScore);
+        console.log("You scored: " + playerScore);
         return result;
 
     }else if (playerSelection === 'PAPER' && computerSelection === 'SCISSORS'){
@@ -69,7 +69,7 @@ function playRound(playerSelection,computerSelection){
 
         let result = "You won! Scissors beast Paper";
         playerScore++;
-        console.log("player scored: " + playerScore);
+        console.log("You scored: " + playerScore);
         return result;
 
     }else if (playerSelection === 'SCISSORS' && computerSelection === 'ROCK'){
@@ -98,7 +98,7 @@ function game(){
         const computerSelection = getComputerChoice();
        
         console.log(playRound(playerSelection,computerSelection));
-        
+        console.log("YOUR SCORE: "+ playerScore + " " + "PC SCORE: " + computerScore)
         if (playerScore === 5 || computerScore === 5){
             if (computerScore===5){
                 console.log("THE PC BEATED YOU!");
