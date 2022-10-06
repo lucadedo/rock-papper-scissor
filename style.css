@@ -1,0 +1,13 @@
+#first {
+    display: flex;
+    margin: 200px;
+    text-align: center;
+    padding: 100px;
+    justify-content: space-evenly;
+}
+button {
+    padding: 30px;
+    background-color: steelblue;
+    font-weight: 900;
+    font-size: large;
+}
