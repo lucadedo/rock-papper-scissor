@@ -10,7 +10,7 @@ const result = document.querySelector('.resultsContainer');
 let yourScore = 0;
 let computerScore = 0;
 
-//game //
+//game play//
 
 function getComputerChoice(){
     let result = Math.floor(Math.random() * 3);
@@ -70,10 +70,20 @@ function playRound(playerChoice,pcChoice){
         }else if(playerChoice === 'SCISSORS' && pcChoice === 'SCISSORS'){
             result.textContent = "No one wins! Scissors and Scissors are a tie!";
         
-        }
+        }}
+    //to print out the winner and restart the game    
+    if (computerScore == 5){
+        console.log("OOPS! THE PC BEATED YOU!");
+        result.textContent = "Good try! but I BEAT YOU!!!";
+        button.style.visibility = 'visible';
 
-    }else  game();
-}
+    }else if(yourScore == 5){
+        console.log("YOU BEATED THE PC!");
+        result.textContent = "Congratulations!! YOU BEAT ME!!";
+        button.style.visibility = 'visible';
+    }
+
+    } 
 
 //click rock
 const rock = document.getElementById('imgRock');
@@ -101,32 +111,16 @@ scissors.addEventListener('click' , () => {
 
 // click try again button
 const button = document.getElementById('again');
-button.addEventListener('click' , () => {
+button.addEventListener('click', () => {
     yourScore = 0;
     playerScore.textContent = yourScore;
+    computerScore = 0;
     pcScore.textContent = computerScore;
     result.textContent = "";
     button.style.visibility = 'hidden';
 })
 
-function game(){
-   console.log("YOUR SCORE: "+ yourScore + " " + "PC SCORE: " + computerScore);
 
-    if (computerScore == 5){
-        console.log("OOPS! THE PC BEATED YOU!");
-        result.textContent = "Good try! but I BEAT YOU!!!";
-        button.style.visibility = 'visible';
-
-    }else if(yourScore == 5){
-        console.log("YOU BEATED THE PC!");
-        result.textContent = "Congratulations!! YOU BEAT ME!!";
-        button.style.visibility = 'visible';
-    }
-            
-    
-        
-          
-}
 
 
 
