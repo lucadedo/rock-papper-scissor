@@ -1,7 +1,16 @@
+//get your score container
+const playerScore = document.querySelector('#yourScorePoints');
 
+//get computer score container
+const pcScore = document.querySelector('#computerScorePoints');
+
+//get result container
+const result = document.querySelector('.resultsContainer');
+
+let yourScore = 0;
 let computerScore = 0;
-let playerScore = 0;
 
+//game //
 
 function getComputerChoice(){
     let result = Math.floor(Math.random() * 3);
@@ -23,138 +32,123 @@ function getComputerChoice(){
    
 function playRound(playerChoice,pcChoice){
     
-    pcChoice = getComputerChoice().toUpperCase();
+    playerChoice = playerChoice.toUpperCase();
+    pcChoice = pcChoice.toUpperCase();
     console.log(playerChoice,pcChoice);
-    
+    if(yourScore < 5 && computerScore < 5){
 
-    if (playerChoice === 'ROCK' && pcChoice === 'PAPER'){
+        if (playerChoice === 'ROCK' && pcChoice === 'PAPER'){
+            result.textContent = "You Lose! Paper beats Rock";
+            pcScore.textContent = (computerScore += 1);
         
-        let result = "You Lose! Paper beats Rock";
-        computerScore++;
-        console.log("computer scored: " + computerScore + " " + result);
-        return result + " " + computerScore;
+        }else if (playerChoice === 'ROCK' && pcChoice === 'ROCK'){
+            result.textContent = "No one wins! Rock and Rock are a tie!";
+            
+        }else if (playerChoice === 'ROCK' && pcChoice === 'SCISSORS'){
+            result.textContent = "You won! Rock beats Scissors!";
+            playerScore.textContent = (yourScore += 1);
+
+        }else if (playerChoice === 'PAPER' && pcChoice === 'PAPER'){
+            result.textContent = "No one wins! Paper and Paper are a tie!";
+            
+        }else if (playerChoice === 'PAPER' && pcChoice === 'ROCK'){
+            result.textContent = "You won! Paper beats Rock!";
+            playerScore.textContent = (yourScore += 1);
         
-    
-    }else if (playerChoice === 'ROCK' && pcChoice === 'ROCK'){
-    
-        let result = "No one wins! Rock and Rock are a tie!";
-        return result;
-    
-    }else if (playerChoice === 'ROCK' && pcChoice === 'SCISSORS'){
+        }else if (playerChoice === 'PAPER' && pcChoice === 'SCISSORS'){
+            result.textContent = "You lose! Scissors beats Paper!";
+            pcScore.textContent = (computerScore += 1);
+            
+        }else if (playerChoice === 'SCISSORS' && pcChoice === 'PAPER'){
+            result.textContent = "You won! Scissors beast Paper";
+            playerScore.textContent = (yourScore += 1);
+            
+        }else if (playerChoice === 'SCISSORS' && pcChoice === 'ROCK'){
+            result.textContent = "You lose! Rock beats Scissors";
+            pcScore.textContent = (computerScore += 1);
+
+        }else if(playerChoice === 'SCISSORS' && pcChoice === 'SCISSORS'){
+            result.textContent = "No one wins! Scissors and Scissors are a tie!";
         
-        let result = "You won! Rock beats Scissors!";
-        playerScore++;
-        console.log("You scored: " + playerScore);
-        return result;
-    
-    }else if (playerChoice === 'PAPER' && pcChoice === 'PAPER'){
-    
-        let result = "No one wins! Paper and Paper are a tie!";
-        return result;
-    
-    }else if (playerChoice === 'PAPER' && pcChoice === 'ROCK'){
-    
-        let result = "You won! Paper beats Rock!";
-        playerScore++;
-        console.log("You scored: " + playerScore);
-        return result;
-    
-    }else if (playerChoice === 'PAPER' && pcChoice === 'SCISSORS'){
-    
-        let result = "You lose! Scissors beats Paper!";
-        computerScore++;
-        console.log("computer scored: " + computerScore);
-        return result + " " + computerScore;
-    
-    }else if (playerChoice === 'SCISSORS' && pcChoice === 'PAPER'){
-    
-        let result = "You won! Scissors beast Paper";
-        playerScore++;
-        console.log("You scored: " + playerScore);
-        return result;
-    
-    }else if (playerChoice === 'SCISSORS' && pcChoice === 'ROCK'){
-    
-        let result = "You lose! Rock beats Scissors";
-        computerScore++;
-        console.log("computer scored: " + computerScore);
-        return result + " " + computerScore;
-    
-    }else if(playerChoice === 'SCISSORS' && pcChoice === 'SCISSORS'){
-    
-        let result = "No one wins! Scissors and Scissors are a tie!";
-        return result;
-    
-    }
-    
+        }
+
+    }else  game();
 }
 
+//click rock
+const rock = document.getElementById('imgRock');
+rock.addEventListener('click', () => {
+    playerChoice = 'rock';
+    pcChoice = getComputerChoice();
+    playRound(playerChoice, pcChoice);
+})
+
+//click paper
+const paper = document.getElementById('imgPaper');
+paper.addEventListener('click' , () => {
+    playerChoice = 'paper';
+    pcChoice = getComputerChoice();
+    playRound(playerChoice, pcChoice);
+})
+
+//click scissors
+const scissors = document.getElementById('imgScissors');
+scissors.addEventListener('click' , () => {
+    playerChoice = 'scissors';
+    pcChoice = getComputerChoice();
+    playRound(playerChoice, pcChoice);
+})
+
+// click try again button
+const button = document.getElementById('again');
+button.addEventListener('click' , () => {
+    yourScore = 0;
+    playerScore.textContent = yourScore;
+    pcScore.textContent = computerScore;
+    result.textContent = "";
+    button.style.visibility = 'hidden';
+})
 
 function game(){
+   console.log("YOUR SCORE: "+ yourScore + " " + "PC SCORE: " + computerScore);
 
-    
+    if (computerScore == 5){
+        console.log("OOPS! THE PC BEATED YOU!");
+        result.textContent = "Good try! but I BEAT YOU!!!";
+        button.style.visibility = 'visible';
 
-        //const playerChoice = runClick();
-        //const pcChoice = getComputerChoice();
-       
-        //console.log(playRound(playerChoice,pcChoice));
-        const buttons = document.querySelectorAll('button');
-
-
-        buttons.forEach((button) => {
-    
-            button.addEventListener('click', () => {
-            runClick(button.textContent);
-          });
-        });
-       
-        console.log("YOUR SCORE: "+ playerScore + " " + "PC SCORE: " + computerScore);
-
-        if (playerScore === 5 || computerScore === 5){
-            if (computerScore===5){
-                console.log("THE PC BEATED YOU!");
-            }else if(playerScore===5){
-                console.log("YOU BEATED THE PC!");
-            }
+    }else if(yourScore == 5){
+        console.log("YOU BEATED THE PC!");
+        result.textContent = "Congratulations!! YOU BEAT ME!!";
+        button.style.visibility = 'visible';
+    }
             
-        }
+    
         
           
 }
 
 
-game();
-
-          // DOM writing //
-
-
-// var btn1 = document.getElementById('button1');
-// btn1.addEventListener('click',runClick);
-// var btn2 = document.getElementById('button2')
-// btn2.addEventListener('click' , runClick);
-// var btn3 = document.getElementById('button3').addEventListener('click' , runClick(button3.textContent));
 
 
 
-// e.preventDefault;
+// function runClick(e) {
+
+//     var playerChoice = e.toUpperCase();
+//     console.log("player choose:" +" "+playerChoice);
+//     return playRound(playerChoice);
+//     //return playerChoice;
+    
+    
+// }
 // const buttons = document.querySelectorAll('button');
 
 
-// buttons.forEach((button) => {
-
-//     button.addEventListener('click', () => {
-//     runClick(button.textContent);
-//   });
-// });
-
-
-function runClick(e) {
-
-    var playerChoice = e.toUpperCase();
-    console.log("player choose:" +" "+playerChoice);
-    return playRound(playerChoice);
-    //return playerChoice;
+//         buttons.forEach((button) => {
     
-    
-}
+//             button.addEventListener('click', () => {
+//             runClick(button.textContent);
+//           });
+//         });
+       
 
