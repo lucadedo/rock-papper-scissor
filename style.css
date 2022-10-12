@@ -1,13 +1,85 @@
-#first {
-    display: flex;
-    margin: 200px;
+body {
+    background-color: aqua;
+    
+}
+/* web header */
+.gameHeader {
+    font-family: Andale Mono, monospace;
+    font-size: 40px;
+    display: block;
     text-align: center;
-    padding: 100px;
+    padding-top: 30px;
+}
+#tryme {
+    font-size: 50px;
+    /* try to beat me */
+}
+
+/* game play section */
+
+.gamePlay {
+    background-color: rgb(216, 45, 45);
+    display: flex;
     justify-content: space-evenly;
+    align-items: center;
+}
+#imgRock{
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+#imgPaper {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+#imgScissors {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+/* score  display section */
+
+.score {
+    background-color: rgb(241, 226, 58);
+    display: block;
+    text-align: center;
+    padding-top:30px;
+}
+.players {
+    display: flex;
+    justify-content: space-evenly;
+    font-family: Andale Mono, monospace;
+    font-size: 30px;
+}
+/* result display section */
+
+.result {
+    display: block;
+    background-color: rgb(241, 226, 58);
+    text-align: center;
+    padding-bottom: 10px;
+}
+.resultsContainer {
+    font-family: Andale Mono, monospace;
+    font-size: 40px;
+    font-weight: 800;
 }
 button {
     padding: 30px;
+    margin-top: 30px;
+    border-radius: 10%;
+    background-color:  rgb(43, 153, 226);
+    font-family: Andale Mono, monospace;
+    font-size: 30px;
+    font-weight: 800;
+}
+/* footer section */
+footer {
     background-color: steelblue;
-    font-weight: 900;
-    font-size: large;
+    padding: 10px;
+    font-family: Andale Mono, monospace;
+    font-size: 20px;
+    text-align: center;
+
 }
