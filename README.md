@@ -5,8 +5,10 @@ web page preview:https://lucadedo.github.io/rock-papper-scissor/
 
 My first JavaScript project!
 
-It was hard at first and I also tried to give up many times,but I insisted and got to the end fo it!!
+It was hard at first and I also tried to give up many times, but I insisted and got to the end of it!!!
 
-It was so satisfying to achive this goal!!!
+It was so satisfying and fun to achieve this goal!!!
 
-All worthed!!
+All worthed!! 
+
+--The Odin Project--
